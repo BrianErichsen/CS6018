@@ -19,11 +19,13 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     override fun onClick(v: View?) {
+        // finds which button was clicked
         val clickedButton = v as Button
         val buttonText = clickedButton.text.toString()
 
+        // creates a new intent before starting the second activity
         val intent = Intent(this, SecondActivity::class.java).apply {
-            putExtra("button_text", buttonText)
+            putExtra("button_text", buttonText) //adds button text to the intent
         }
         startActivity(intent)
     }

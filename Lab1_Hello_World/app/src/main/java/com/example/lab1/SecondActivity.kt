@@ -9,8 +9,10 @@ class SecondActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_second)
 
+        // retrieves button text value that started the intent
         val buttonText = intent.getStringExtra("button_text")
 
+        // sets the text to be the text of button that started the intent
         findViewById<TextView>(R.id.textView).apply {
             text = buttonText
         }
