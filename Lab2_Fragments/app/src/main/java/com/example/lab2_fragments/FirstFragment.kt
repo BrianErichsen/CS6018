@@ -1,6 +1,7 @@
 package com.example.lab2_fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -28,5 +29,6 @@ class FirstFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
+        Log.d("FirstFragment", "Fragment view destroyed")
     }
 }//end of class first fragment

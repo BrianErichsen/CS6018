@@ -24,12 +24,13 @@ class SecondFragment : Fragment() {
         drawingView = view.findViewById(R.id.drawingView)
 
         savedBitmap?.let {
-            drawingView.setBitmap(it)
+            drawingView.setBitMap(it)
+            Log.d("SecondFragment", "Restoring saved drawing")
         }
 
         drawingView.setOnTouchListener { _, event ->
             if (event.action == MotionEvent.ACTION_MOVE || event.action == MotionEvent.ACTION_DOWN) {
-                drawingView.addTouch(event.x, event.y)
+                drawingView.addDrawing(event.x, event.y)
                 true
             } else {
                 false
@@ -41,9 +42,8 @@ class SecondFragment : Fragment() {
     override fun onPause() {
         super.onPause()
         savedBitmap = drawingView.getBitMap()
+        Log.d("SecondFragment", "Saving drawing state in onPause")
     }
-
-
 
     override fun onDestroyView() {
         super.onDestroyView()

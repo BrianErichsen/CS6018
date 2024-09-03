@@ -14,7 +14,7 @@ class DrawingView(context: Context, attrs: AttributeSet) : View(context, attrs) 
     private val paint = Paint().apply {
         color = Color.BLACK
         style = Paint.Style.STROKE
-        strokeWidth = 10f
+        strokeWidth = 5f
         isAntiAlias = true
     }
     private var bitmap: Bitmap? = null
@@ -37,17 +37,17 @@ class DrawingView(context: Context, attrs: AttributeSet) : View(context, attrs) 
         }
     }
 
-    fun addTouch(x: Float, y: Float) {
+    fun addDrawing(x: Float, y: Float) {
         canvas?.drawCircle(x, y, 20f, paint)
         invalidate()
     }
 
     fun getBitMap(): Bitmap? {
-        return bitmap
+        return bitmap?.copy(Bitmap.Config.ARGB_8888, true)
     }
 
-    fun setBitmap(newBitmap: Bitmap) {
-        bitmap = newBitmap
+    fun setBitMap(savedBitmap: Bitmap) {
+        bitmap = savedBitmap.copy(Bitmap.Config.ARGB_8888, true)
         canvas = Canvas(bitmap!!)
         invalidate()
     }
